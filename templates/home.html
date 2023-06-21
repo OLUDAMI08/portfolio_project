@@ -34,10 +34,11 @@
         ea! Praesentium, id sed laudantium magni libero fugiat ab vitae!
       </p>
       <h2 class="text-center mt-2 mb-4">Open positions</h2>
-      <p>TODO - data anylyst</p>
+      {% for job in jobs%} {%include 'jobitems.html'%} {%endfor%}
+
       <div class="text-center">
         <button type="button" class="btn btn-primary btn-lg">Contact us</button>
-        <p mt-2 mb-4>copyright 2023</p>
+        <p mt-2 mb-4>Copyright 2023</p>
       </div>
     </div>
   </body>
