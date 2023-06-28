@@ -12,7 +12,7 @@
       {% if 'salary' in job%}
       <div>
         <b>Salary:</b>
-        {{ job.get('salary')}}
+        {{job.get('currency')}} {{ job.get('salary')}}
       </div>
       {%endif%} <br />
     </div>
