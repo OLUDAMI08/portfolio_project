@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    {% include 'boostrap.html' %}
+  </head>
+  <body>
+    {% include 'nav.html' %} <br />
+    {% include 'banner.html' %}
+    <div class="container">
+      <h1 class="text-center mt-8 pt-0 mb-3">EmpowerCo career</h1>
+      <h3>Title</h3>
+      <p>{{ job.get('title')}}</p>
+
+      <h3>Location</h3>
+      <p>{{ job.get('location')}}</p>
+      <br />
+
+      <div class="mb-5">
+        <h3>Responsibilities</h3>
+        <ul>
+          {% for line in job.responsibilities.split(".")%} {% if line != "" %}
+          <li>{{line}}{{ "." if not loop.last else "" }}</li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+      <br />
+
+      <div class="mt-5">
+        <h3>Requirements</h3>
+        <ul>
+          {% for line in job.requirements.split(".")%} {% if line != "" %}
+          <li>{{line}}{{ "." if not loop.last else "" }}</li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+      <br />
+
+      <div class="mt-4">
+        <h3>Salary</h3>
+        <p>{{ job.get('currency')}} {{ job.get('salary')}}</p>
+      </div>
+      {% include 'application-form.html'%} {% include 'footer.html' %}
+    </div>
+  </body>
+</html>
