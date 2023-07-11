@@ -27,17 +27,36 @@ def load_job_from_db(id):
             return None
         else:
             return rows[0]._asdict()
-        
 
 
-def add_application_to_db(id, data):
+# def add_application_to_db(job_id, data):
+#     with engine.connect() as conn:
+#         query = text('INSERT INTO application(job_id, full_name, email, linkedin_url, education, resume_url) VALUES(:job_id, :full_name, :email, :linkedin_url, :education, :resume_url)')
+#         conn.execute(query, job_id=job_id, **data)
+
+
+# def add_application_to_db(job_id, data):
+#     with engine.connect() as conn:
+#         query = text("INSERT INTO application(job_id, full_name, email, linkedin_url, education, resume_url) VALUES(:id, :full_name, :email, :linkedin_url, :education, :resume_url)")
+#         conn.execute(query,
+#                      job_id=job_id,
+#                      full_name=data['full_name'],
+#                      email=data['email'],
+#                      linkedin_url=data['linkedin_url'],
+#                      education=data['education'],
+#                      resume_url=data['resume_url']
+#                      )
+
+def add_application_to_db(job_id, data):
     with engine.connect() as conn:
-        query = text('INSERT INTO application(
-                     job_id, 
-                     full_name, 
-                     email, 
-                     linkedin_url, 
-                     education, 
-                     resume_url)
-        VALUES(:job_id, :full_name, :email, :linkedin_url, :education, :resume_url)
-        ')
+        query = text("INSERT INTO application (job_id, full_name, email, linkedin_url, education, resume_url) VALUES(:job_id, :full_name, :email, :linkedin_url, :education, :resume_url)")
+        params = {
+            'job_id': job_id,
+            'full_name': data['full_name'],
+            'email': data['email'],
+            'linkedin_url': data['linkedin_url'],
+            'education': data['education'],
+            'resume_url': data['resume_url']
+        }
+        conn.execute(query, params)
+        conn.commit()
