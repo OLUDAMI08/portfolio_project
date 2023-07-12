@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, text
 
 
-engine = create_engine("mysql+pymysql://root:@localhost:3306/empowerCo")
+engine = create_engine("mysql+pymysql://root:@localhost:3307/empowerCo")
 
 
 def jobs_load_from_db():
