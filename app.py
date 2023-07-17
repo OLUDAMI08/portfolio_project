@@ -33,4 +33,4 @@ def apply_job_by_id(id):
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True, port=8000)
